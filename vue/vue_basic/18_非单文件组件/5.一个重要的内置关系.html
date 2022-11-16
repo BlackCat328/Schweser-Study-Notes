@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+
+
+<!--
+    1.一个重要的内置关系:VueComponent.prototype.__proto__ === Vue. prototype
+    2.为什么要有这个关系:让组件实例对象(vc)可以访问到 Vue原型上的属性、方法。
+-->
+
+<div id="root">
+
+</div>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false //阻止vue启动提示
+
+    const student = Vue.extend({
+        data() {
+            return {
+                studentName: '魏帅',
+                age: 18
+            }
+        }
+    })
+
+    new Vue({
+        el:'#root',
+        data:{
+            msg:'你好'
+        }
+    })
+</script>
+</body>
+</html>

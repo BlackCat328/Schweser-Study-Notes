@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+    <h2>n:{{n}}</h2>
+    <button @click="add">点击n+1</button>
+    <button @click="bye">点击销毁vm</button>
+</div>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false //阻止vue启动提示
+
+    new Vue({
+        el: '#root',
+        data: {
+            n: 1
+        },
+        methods: {
+            add() {
+                this.n++
+            },
+            bye(){
+                this.$destroy()
+            }
+        },
+        beforeCreate() {
+            console.log('beforeCreate')
+            // console.log(this)
+            // debugger
+        },
+        created() {
+            console.log('created')
+            // console.log(this)
+            // debugger
+        },
+        beforeMount() {
+            console.log('beforeMount')
+            // console.log(this)
+            // debugger
+        },
+        mounted() {
+            console.log('mounted')
+            // console.log(this)
+            // debugger
+        },
+        beforeUpdate() {
+            console.log('beforeUpdate')
+            // console.log(this.n)
+            // debugger
+        },
+        updated() {
+            console.log('updated')
+            // console.log(this.n)
+            // debugger
+        },
+        beforeDestroy() {
+            console.log('beforeDestroy')
+            // console.log(this)
+            // debugger
+        },
+        Destroyed() {
+            console.log('Destroyed')
+            // console.log(this)
+            // debugger
+        }
+    })
+</script>
+</body>
+</html>

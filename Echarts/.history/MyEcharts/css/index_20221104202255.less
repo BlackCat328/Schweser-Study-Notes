@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url(../images/bg.jpg) no-repeat top center;
+    line-height: 1.15;
+}
+
+header {
+    position: relative;
+    height: .9434rem;
+    background: url(../images/head_bg.png) no-repeat;
+    background-size: 100% 100%;
+
+    h1 {
+        text-align: center;
+        font-size: .3585rem;
+        color: #fff;
+        line-height: .7547rem;
+    }
+
+    .showTime {
+        position: absolute;
+        top: 0;
+        right: .283rem;
+        line-height: .7075rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: .1887rem;
+    }
+}
+
+.mainbox {
+    display: flex;
+    min-width: 1024px;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: .0943rem .0943rem 0;
+
+    .column {
+        flex: 3;
+    }
+
+    .column::nth-child(2) {
+        flex: 5;
+    }
+
+    .panel {
+        position: relative;
+        height: 2.9245rem;
+        border: 1px solid rgba(25, 186, 139, 0.17);
+        background: url(../images/line\(1\).png);
+        padding: 0 .1415rem .3774rem;
+        margin-bottom: .1415rem;
+        background-color: rgba(255, 255, 255, 0.03);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: .0943rem;
+            height: .0943rem;
+            border-left: .0189rem solid #02a6b5;
+            border-top: .0189rem solid #02a6b5;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: .0943rem;
+            height: .0943rem;
+            border-right: .0189rem solid #02a6b5;
+            border-top: .0189rem solid #02a6b5;
+        }
+
+        .panel-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: .0943rem;
+                height: .0943rem;
+                border-left: .0189rem solid #02a6b5;
+                border-bottom: .0189rem solid #02a6b5;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: .0943rem;
+                height: .0943rem;
+                border-right: .0189rem solid #02a6b5;
+                border-bottom: .0189rem solid #02a6b5;
+            }
+        }
+        
+    }
+}

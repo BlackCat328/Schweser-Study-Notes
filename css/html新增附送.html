@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新增</title>
+		伪类选择器
+		div:hover  单冒号
+		<style>
+		.box{
+			height: 40px;
+			width: 120px;
+			background-color: pink;
+		}
+		.box:hover{
+			background-color: red;
+		}
+
+		-------------------------------
+
+		伪元素  双冒号
+		::before
+
+		::after
+
+		.text::before{
+			content: '在我之前';
+			color: red;
+		}
+		.text::after{
+			content: '在我后面';
+			color: blue;
+		}
+	</style>
+
+</head>
+<body >
+	<div class="box">:hover</div>
+	<span class="text">我在这里等你</span>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+        //创建一个Person类
+            //构造器方法
+            constructor(name, age){
+                //构造器中的 this 指向类的实例对象------------(p1, p2)
+                this.name = name
+                this.age = age
+            }
+            //一般方法
+            speak(){
+                //speak方法放在了哪里？-----------------类的原型对象上，供实例(p1, p2)使用
+                //通过Person实例调用speak时，speak中的this就是Person实例
+                console.log(`我叫${this.name},年龄为${this.age}`)
+            }
+        }
+
+        //创建一个Person的实例对象
+        /*const p1 = new Person('tom', 18)
+        const p2 = new Person('jerry', 20)
+
+        console.log(p1)
+        console.log(p2)
+        p1.speak()
+        p2.speak()*/
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+
+</div>
+
+
+<script type="text/javascript">
+    Vue.config.productionTip = false //阻止vue启动提示
+
+    const student = Vue.extend({
+        template: `
+          <div>
+          <h2>学生名称：{{ studentName }}</h2>
+          <h2>学生年龄：{{ age }}</h2>
+          </div>`,
+        data() {
+            return {
+                studentName: '魏帅',
+                age: 18
+            }
+        }
+    })
+
+    const hello = Vue.extend({
+        template: `<h1>{{ msg }}</h1>`,
+        data() {
+            return {
+                msg: 'hello,牛逼思密达！！'
+            }
+        }
+    })
+
+    const school = Vue.extend({
+        template: `
+          <div>
+          <h2>学校名称：{{ schoolName }}</h2>
+          <h2>学校地址：{{ address }}</h2>
+          <button @click="showName">点我提示学校名</button>
+          <student></student>
+          </div>`,
+        data() {
+            return {
+                schoolName: '青中',
+                address: '青神'
+            }
+        },
+        methods: {
+            showName() {
+                alert(this.schoolName)
+            }
+        },
+        components: {
+            student
+        }
+    })
+
+    const app = Vue.extend({
+        template: `
+          <div>
+          <school></school>
+          <hello></hello>
+          </div>
+        `,
+        components: {
+            school,
+            hello
+        }
+    })
+
+    new Vue({
+        template:`<div><h1>{{msg}}</h1><app></app></div>`,
+        el: '#root',
+        data: {
+            msg: '欢迎！！！！'
+        },
+        components: {
+            app
+        }
+    })
+</script>
+</body>
+</html>

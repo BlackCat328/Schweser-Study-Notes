@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css选择器</title>
+	<style>
+		4种  组合选择器
+		span{
+			color: red;
+		}
+
+	后代选择器
+		p span{
+				color: red;
+			}
+	子代选择器 只选中div的后一代，跨代不选择,必须符合 [父子] 关系
+		div>em{
+					color: red;
+				}
+	兄弟选择器	 同级的，并且只选中我 [后面] 出现的元素 在我 [之前] 的选不中
+		.one~span{
+				color: red;
+			}
+
+	下一个兄弟 只会选中他下一个兄弟	
+		.one+span{
+			color: red;
+			
+	交集选择器 中间没有空格 格式为 元素名.类名
+		div span.one{
+			color: red;
+		}
+	分组选择器
+		h1,h2,h3,h4,h5,h6,div span.one{
+			color: red;
+		}
+
+	</style>
+</head>
+<body>
+	<section>
+		<h1>h1文字行</h1>
+		<h2>h2文字行</h2>
+		<h3>h3文字行</h3>
+		<h4>h4文字行</h4>
+		<h5>h5文字行</h5>
+		<h6>h6文字行</h6>
+
+		<div>
+			<p>我是第一行p</p>
+			<p>
+				<span>我是第二行p中的span1前面的span</span>
+				<span class="one">我是第二行p中的span1</span>
+				<span>我是第二行p中的span2</span>
+				<span>我是第二行p中的span3</span>
+			</p>
+			<p class="one">
+				<span>我是第三行p中的span1</span>
+				<span>我是第三行p中的span2</span>
+				<em>我是第三行p中的em</em>
+			</p>
+			<div>
+				<p>我是第四行div中的p</p>
+				<span>我是第四行div中的span</span>
+				<span>我是第四行div中的span</span>
+			</div>
+			<em>我是第五行的em </em>
+		</div>
+		<p>我是第五行div外面的p</p>
+		<p>我是第六行div外面的p</p>
+	</section>
+</body>
+</html>

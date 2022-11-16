@@ -1,0 +1,37 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "魏先生爱吃牙膏",
+      "author": "魏先生"
+    },
+    {
+      "{\"title\":\"万物归零\",\"author\":\"魏先生\"}": "",
+      "id": 3
+    },
+    {
+      "{\"title\":\"万物归零\",\"author\":\"魏先生\"}": "",
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "body": "帅得拉胯",
+      "postId": 2,
+      "id": 2
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

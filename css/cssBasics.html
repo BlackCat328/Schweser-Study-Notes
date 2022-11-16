@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cssBasics css样式 引入方式</title>
+	css [层叠]样式表
+	第一种 css引入方式 外部样式表 最推荐使用
+	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="testCss.css">
+	第二种 css引入方式  内嵌样式表
+	<style>
+		body{
+			background-color: blue;
+		}
+	</style>
+</head>
+	第三种 css引入方式  行内样式表
+	<body style="background-color:yellow;">	
+	</body>
+	关于优先级的关系问题?
+	
+		行内样式 >  内嵌样式  > 外部样式
+	
+	引入方式 样式优先级关系 （加载有顺序 就近原则）
+
+	语法的书写格式：
+	选择器{
+		属性1：属性值1;
+		属性2：属性值2;
+	}
+	两个属性之间一定要加;
+	
+	翻译：
+	选择到某一个元素{
+		修改哪一个样式:修改成具体的什么值;
+	}
+<body>	
+</body>
+
+示例1：如果属性相同 就近的产生效果
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<style>
+		h1{
+			color: red;
+		}
+		h1{
+			color: blue; (依然有顺序问题)
+		}
+	</style>
+	
+</head >
+<body >
+	<h1>我是header中的h1</h1>
+	<h2>我是header中的h2</h2>
+	<h1>我是header中的h1</h1>
+</body>
+
+
+
+示例2：只要是h1 全屏的h1 都会被修改
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<style>
+		h1{
+			color: red;
+		}
+		
+	</style>
+	
+</head >
+<body >
+	<header>
+		<h1>我是header中的h1</h1>
+		<h2>我是header中的h2</h2>
+		<h1>我是header中的h1</h1>
+	</header>
+	<footer>
+		<h1>我是footer中的h1</h1>
+	</footer>
+</body>
+
+id 和 class 选择器
+他们都是需要单独加标签
+1.id就是类似于 你们的身份证一样，是唯一；
+2.class 就是类选择器 选择类似于 一类人群；
+
+选择器：
+1.元素选择器；
+2.class 类型选择器   .类名{}
+3.id选择器     #id名字{}   id唯一的名字
+4.*选择器：选择所有的标签   *{}
+*{
+	margin:0px;
+	padding:0px;
+}
+
+测试一下他们的优先级
+!important > 行内样式（1000）> id选择器（100） > class类选择器（10） > 元素选择器（1）
+                                  林青霞                美女               女的
+
+
+
+
+
+示例3：
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<style>
+		/*h1{
+			color: red;
+		}*/
+		.colorGreen{
+			color: green;
+		}
+
+		#headerH1{
+			color: blue;
+		}
+	</style>
+	
+</head >
+<body >
+	<header>
+		<h1 id="headerH1" class="colorGreen" >我是header中的h1</h1>
+		<h2>我是header中的h2</h2>
+		<h1>我是header中的h1</h1>
+	</header>
+	<footer>
+		<h1>我是footer中的h1</h1>
+		<h2>我是footer中的h2</h2>
+	</footer>
+</body>
+
+
+
+
+CSS层叠样式表 的特性
+1.相同的样式属性（就近原则）会被覆盖，
+2.不同的样式属性会叠加；
+示例4：
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<style>
+		h2{
+			color: red;
+		}
+		h2{
+			font-size: 50px;
+		}
+	</style>
+	
+</head >
+<body >
+	<header>
+		<h1 >我是header中的h1</h1>
+		<h2>我是header中的h2</h2>
+		<h1>我是header中的h1</h1>
+	</header>
+	<footer>
+		<h1>我是footer中的h1</h1>
+		<h2>我是footer中的h2</h2>
+	</footer>
+</body>
+
+在来说一下 id  和  class
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<style> 属性相同时 与这个地方的前后顺序 [有关]
+		.colorYellow{
+			color: yellow;
+		}
+
+		.colorGreen{
+			color: green;
+		}
+		/*.bgColorRed{
+			background-color: red;
+		}*/
+	</style>
+	
+</head >
+<body >
+	<header>
+	<h1>我是header中的h1</h1>
+	<h2>我是header中的h2</h2>
+	<h1>我是header中的h1</h1>
+
+	<h1>我是header中的h1</h1>
+	<h3>我是header中的h3</h3>
+</header>
+<footer>
+	<h1>我是footer中的h1</h1>
+
+	<h1>我是footer中的h1</h1>
+	<h2>我是footer中的h2</h2>
+	<h4 class=" colorGreen colorYellow ">我是footer中的h4</h4> 属性相同时 与这个地方的前后顺序 [无关]
+	<h4 >我是footer中的h4</h4>
+</footer>
+</body>
+
+
+
+优先级测试：
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<style>
+		p{color:green; }
+		.red{color:red  !important;}
+		.purple{color:purple ;}
+		#line3{color:blue;}
+	</style>
+	
+</head >
+<body >
+	<section>
+		<p>这是第1行文本 绿</p>
+		<p class="red">这是第2行文本 红</p>
+		<p id="line3" class="red">这是第3行文本 蓝</p>
+		<p style="color:orange;" id="line3">这是第4行文本 蓝</p>
+		<p class="purple red">这是第5行文本 红</p>
+	</section>
+</body>
+
+</html>

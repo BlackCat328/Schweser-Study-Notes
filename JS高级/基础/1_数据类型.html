@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型</title>
+</head>
+<body>
+<!--
+1.分类
+   * 基本类型
+       * String：任意字符串
+       * Number：任意数字
+       * boolean：true/false
+       * undefined：undefined
+       * null：null
+   * 对象(引用)类型
+       * Object：任意对象
+       * Function：一种特别的对象（可以执行）
+       * Array：一种特别的对象（数值下标，内部数据是有序的）
+2.判断
+    * typeof
+        * 可以判断：undefined / 数值 / 字符串 / 布尔值 / Function
+        * 不能判断：null与Object Object与Array
+    * instanceof
+        * 判断对象的数据类型
+    * ===
+        * 可以判断：undefined / null
+3.问题
+    * undefined与null的区别？
+        * undefined 定义了未赋值
+        * null 定义了赋值为null
+    * 什么时候给变量赋值null？
+        * var b = null 初始赋值为null,表明将要赋值为对象
+        * 让b指向的对象成为垃圾对象（被垃圾回收器回收）
+    * 严格区分数据类型与变量类型？
+        * 数据类型
+            * 基本类型
+            * 对象类型
+        * 变量类型（变量内存值的类型）
+            * 基本类型：保存的是基本类型的数据
+            * 引用类型：保存的是地址值
+-->
+<script type="text/javascript">
+// 1.基本
+// typeof 返回数据类型的字符串
+var a
+console.log(a,typeof a,typeof a === 'undefined',a === undefined)
+console.log(undefined==='undefined')
+a = 4
+console.log(typeof a,typeof a === 'number',a === Number)
+a = 'sadsad'
+console.log(typeof a,typeof a === 'string',a === String)
+a = true
+console.log(typeof a,typeof a === 'boolean',a === true)
+a = null
+console.log(typeof a,typeof a === 'null',a === null,typeof a === 'object')
+
+console.log('------------------------------------------------------------------------------------')
+// 2.对象
+var a1 = {
+    a2:[1,'ads',console.log],
+    a3:function () {
+        console.log("a3")
+        return function () {
+            return 'nb'
+        }
+    }
+}
+
+console.log(a1 instanceof Object,a1 instanceof Array)
+console.log(a1.a2 instanceof Array,a1.a2 instanceof Object)
+console.log(a1.a3 instanceof Function,a1.a3 instanceof Object)
+console.log(typeof a1.a2)
+console.log(typeof a1.a3 === 'function')
+console.log(typeof a1.a2[2])
+console.log(a1.a3()())
+
+console.log('----------------------------------例题-------------------------------------')
+var uname = "window";
+var object = {
+    uname :"object",
+    fun:function(){
+        console.log(this.uname);
+        return function(){
+            console.log(this.uname);
+        }
+    }
+}
+object.fun()()
+</script>
+</body>
+</html>
