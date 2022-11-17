@@ -1,0 +1,3 @@
+const Koa = require("koa"); // 不能使用esmodule，必须使用
+
+const app = new Koa();
