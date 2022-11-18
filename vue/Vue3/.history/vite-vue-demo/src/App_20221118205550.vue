@@ -5,8 +5,6 @@
   <hr>
   <div>toRefs: {{ Man1 }}</div>
   <button @click="change2">修改</button>
-  <hr>
-  <button @click="clickToRaw">toRaw</button>
 
 </template>
 
@@ -16,8 +14,6 @@ import { reactive, toRef, toRefs, toRaw } from 'vue';
   1. toRef 只能修改响应式对象的值，非响应式视图毫无变化
   
   2. toRefs 循环调用 toRef
-
-  3. toRaw 将响应式去除
 */
 
 
@@ -32,8 +28,8 @@ const change1 = () => {
 }
 
 // toRefs
-// 源码实现
-const toRefs2 = <T extends object>(object: T) => {
+// 源码
+const toRefs = <T extends object>(object: T) => {
   const map: any = {}
 
   for (let key in object) {
@@ -44,22 +40,11 @@ const toRefs2 = <T extends object>(object: T) => {
 }
 
 const Man1 = reactive({ name: '魏先生', age: 12 })
-const { name, age } = toRefs2(Man1)
-const { name: name1, age: age1 } = toRefs(Man1)
+const { name, age } = toRefs(Man1)
 
 const change2 = () => {
   name.value = '小魏'
-  age.value = 23
   console.log(name, age);
-  console.log(name1, age1);
-}
-
-// toRaw
-// 源码实现
-const Man2 = reactive({ name: '小刘', age: 45 })
-const clickToRaw = () => {
-  console.log(Man2, toRaw(Man2));
-  console.log(Man2, '源码实现 -->', Man2['__v_raw']);
 }
 
 </script>

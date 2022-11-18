@@ -6,7 +6,7 @@
   <div>toRefs: {{ Man1 }}</div>
   <button @click="change2">修改</button>
   <hr>
-  <button @click="clickToRaw">toRaw</button>
+  <button>toRaw</button>
 
 </template>
 
@@ -56,10 +56,8 @@ const change2 = () => {
 
 // toRaw
 // 源码实现
-const Man2 = reactive({ name: '小刘', age: 45 })
-const clickToRaw = () => {
-  console.log(Man2, toRaw(Man2));
-  console.log(Man2, '源码实现 -->', Man2['__v_raw']);
+const toRaw2 = ()=>{
+
 }
 
 </script>
