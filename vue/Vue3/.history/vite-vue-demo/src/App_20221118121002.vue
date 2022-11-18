@@ -99,8 +99,7 @@ const show = () => {
     it's not a bug.
     the change to ref triggers the re-render,the shallow ref change does not.
     But during re-render all of the component's template is updated with the latest data.
-  意思就是对 ref 的更改会触发重新渲染，浅层的 ref 不会触发重新渲染
-  一旦重新渲染，所有组件模板都会更新为最新数据
+  意思就是对 ref 的更改会触发重新渲染
 */
 let Man3: any = shallowReactive({ foo: { bar: { num: 1 } } })
 let Man4 = reactive({ name: '擎天柱' })

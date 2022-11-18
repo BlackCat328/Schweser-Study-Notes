@@ -95,12 +95,10 @@ const show = () => {
   shallowReactive 声明的对象 与 reactive 声明的对象在页面视图 **同时展示** 时，
   并且一起更改时，两者会一起渲染视图，没有浅层的影响
   这个跟 ref 和 shallowRef 都存在这个问题，官方明示这不是一个 bug
-  官方尤雨溪解释：
-    it's not a bug.
+  官方尤解释：
+    it's not a bug
     the change to ref triggers the re-render,the shallow ref change does not.
-    But during re-render all of the component's template is updated with the latest data.
-  意思就是对 ref 的更改会触发重新渲染，浅层的 ref 不会触发重新渲染
-  一旦重新渲染，所有组件模板都会更新为最新数据
+    But during
 */
 let Man3: any = shallowReactive({ foo: { bar: { num: 1 } } })
 let Man4 = reactive({ name: '擎天柱' })

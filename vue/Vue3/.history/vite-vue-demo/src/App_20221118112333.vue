@@ -1,0 +1,19 @@
+<template>
+
+  <div></div>
+
+</template>
+
+<script setup lang='ts'>
+import { reactive } from 'vue';
+/* 
+  ref reactive
+  1. ref 支持所有类型
+  2. reactive 支持引用类型，如 Arra
+*/
+
+</script>
+
+<style scoped>
+
+</style>

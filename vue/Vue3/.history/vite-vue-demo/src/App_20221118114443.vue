@@ -20,16 +20,12 @@
     <button @click="onPush">add</button>
     <h3>只读属性</h3>
     <button @click="show">查看</button>
-    <h3>shallowReactive</h3>
-    <div>{{ Man3 }}</div>
-    <div>{{ Man4 }}</div>
-    <button @click="changeShallowReactive">修改</button>
   </div>
 
 </template>
 
 <script setup lang='ts'>
-import { reactive, readonly, shallowReactive } from 'vue';
+import { reactive, readonly } from 'vue';
 /* 
   ref reactive
   1. ref 支持所有类型
@@ -73,49 +69,11 @@ const onPush = () => {
 }
 
 // readonly 将 reactive 声明的对象变成只读的
-// 平时用的少，源码里面用的多
 let obj = reactive({ name: '小刘' })
 const readObj = readonly(obj)
 
 const show = () => {
-  // readObj.name = '麻雀'
-  /* 
-    将 readonly 的值赋值，会得到 vue 的警告：
-      [Vue warn] Set operation on key "name" failed: target is readonly.
-  */
-  obj.name = '麻雀'
-  // 更改 readonly 的对象的属性，那么全部会更改掉，即 readObj 会受到 obj 影响
-  console.log('没有readonly -->', obj);
-  console.log('使用了readonly -->', readObj);
-}
 
-// shallowReactive 与 shallowRef 一样是浅层的
-// shallowReactive 只到第一个属性，如 .foo，shallowRef只到第一属性 .value
-/* 
-  shallowReactive 声明的对象 与 reactive 声明的对象在页面视图 **同时展示** 时，
-  并且一起更改时，两者会一起渲染视图，没有浅层的影响
-  这个跟 ref 和 shallowRef 都存在这个问题，官方明示这不是一个 bug
-  官方尤雨溪解释：
-    it's not a bug.
-    the change to ref triggers the re-render,the shallow ref change does not.
-    But during re-render all of the component's template is updated with the latest data.
-  意思就是对 ref 的更改会触发重新渲染，浅层的 ref 不会触发重新渲染
-  一旦重新渲染，所有组件模板都会更新为最新数据
-*/
-let Man3: any = shallowReactive({ foo: { bar: { num: 1 } } })
-let Man4 = reactive({ name: '擎天柱' })
-
-const changeShallowReactive = () => {
-  // 只到第一个属性
-  // Man3.foo = { name: '老魏' }
-
-  // 视图更改不了
-  // Man3.foo.bar.num = 234 
-
-  Man4.name = 'reactive值'
-  Man3.foo.bar.num = 'shallowReactive值'
-
-  console.log(Man3);
 }
 </script>
 
