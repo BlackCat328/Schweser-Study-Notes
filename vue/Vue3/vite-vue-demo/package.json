@@ -11,6 +11,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
     "element-plus": "^2.2.22",
+    "gsap": "^3.11.3",
     "unplugin-vue-define-options": "^0.12.7",
     "vite-plugin-inspect": "^0.7.8",
     "vue": "^3.2.41"
