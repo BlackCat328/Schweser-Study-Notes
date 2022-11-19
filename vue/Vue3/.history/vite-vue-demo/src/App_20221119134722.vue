@@ -1,0 +1,24 @@
+<template>
+
+  <div>父组件</div>
+  <hr>
+  <waterFallVue @on-click="getName" :name="name" :arr="[1, 2, 3]" />
+
+</template>
+
+<script setup lang='ts'>
+import { ref, reactive } from 'vue';
+import waterFallVue from './components/water-fall.vue';
+
+let name = '魏先生'
+
+// 接收
+const getName = (name: string, num: number) => {
+  console.log('父组件收到传的值', name, '----', num)
+}
+
+</script>
+
+<style lang="less" scoped>
+
+</style>

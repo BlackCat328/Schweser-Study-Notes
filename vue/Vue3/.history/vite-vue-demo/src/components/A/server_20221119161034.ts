@@ -1,0 +1,3 @@
+type NameList = {
+    name
+}
