@@ -9,6 +9,9 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     A: typeof import('./src/components/A.vue')['default']
     B: typeof import('./src/components/B.vue')['default']
+    C: typeof import('./src/components/C.vue')['default']
+    copy: typeof import('./src/components/B copy.vue')['default']
+    D: typeof import('./src/components/D.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']
@@ -25,5 +28,9 @@ declare module '@vue/runtime-core' {
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
     ElTransfer: typeof import('element-plus/es')['ElTransfer']
+    Loading: typeof import('./src/components/Loading/index.vue')['default']
+    ProvideA: typeof import('./src/components/provideA.vue')['default']
+    ProvideB: typeof import('./src/components/provideB.vue')['default']
+    VModel: typeof import('./src/components/v-model.vue')['default']
   }
 }

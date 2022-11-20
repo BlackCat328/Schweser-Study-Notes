@@ -1,0 +1,32 @@
+
+
+import { onMounted } from 'vue'
+
+
+
+
+
+
+
+
+
+
+
+
+type Options = {
+    el: string
+}
+
+export default function (options: Options) {
+    onMounted(() => {
+        let img: HTMLImageElement = document.querySelector(options.el) as HTMLImageElement
+        console.log(img)
+        img.onload = () => {
+            base64(img)
+        }
+    })
+
+    const base64 = (el: HTMLImageElement) => {
+
+    }
+}

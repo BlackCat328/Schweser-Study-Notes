@@ -1,0 +1,17 @@
+<template>
+
+  <div>
+    <h1>我是APP.vue父组件</h1>
+    <div><button>开关</button></div>
+    h'r
+  </div>
+
+</template>
+
+<script setup lang='ts'>
+
+</script>
+
+<style scoped lang='less'>
+
+</style>

@@ -1,0 +1,48 @@
+<template>
+
+  <div>
+    <h1>我是APP.vue父组件</h1>
+    <hr>
+    <vModelVue v-move:wsgg="{ background: 'red' }"></vModelVue>
+  </div>
+
+</template>
+
+<script setup lang='ts'>
+import { Directive } from 'vue';
+import vModelVue from './components/v-model.vue';
+
+const isShow = ref<boolean>(true)
+
+const text = ref<string>('魏先生')
+
+const vMove: Directive = {
+  created() {
+    console.log('created')
+  },
+  beforeMount() {
+    console.log('beforeMount')
+  },
+  mounted(...args: Array<any>) {
+    console.log('mounted')
+    console.log('params --->', args)
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate')
+  },
+  updated() {
+    console.log('updated')
+  },
+  beforeUnmount() {
+    console.log('beforeUnmount')
+  },
+  unmounted() {
+    console.log('unmounted')
+  }
+}
+
+</script>
+
+<style scoped lang='less'>
+
+</style>

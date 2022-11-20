@@ -1,0 +1,21 @@
+<template>
+
+    <div class="A">
+        <h1>我是A</h1>
+        <button @click="emit">emit</button>
+    </div>
+
+</template>
+
+<script setup lang='ts'>
+import { ref, reactive } from 'vue';
+
+const emit = () => {
+
+}
+
+</script>
+
+<style scoped lang='less'>
+
+</style>
