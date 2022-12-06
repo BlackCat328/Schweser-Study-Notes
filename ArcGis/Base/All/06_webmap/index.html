@@ -1,0 +1,59 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <meta
+   name="viewport"
+   content="initial-scale=1,maximum-scale=1,user-scalable=no"
+  />
+  <title>Load a basic WebMap | Sample | ArcGIS API for JavaScript 4.25</title>
+
+  <style>
+   html,
+   body,
+   #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+   }
+  </style>
+
+  <link
+   rel="stylesheet"
+   href="https://js.arcgis.com/4.25/esri/themes/light/main.css"
+  />
+
+  <script src="https://js.arcgis.com/4.25/"></script>
+
+  <script>
+   require(["esri/views/MapView", "esri/WebMap"], (MapView, WebMap) => {
+    /************************************************************
+     * 创建一个新的 WebMap 实例
+     * WebMap 必须引用 PortalItem ID
+     * 该ID表示保存到 arcgis.com 或内部门户的 WebMap
+     *
+     * 要从内部门户加载 WebMap
+     * 使用 esriConfig.portalUrl 设置门户 url
+     ************************************************************/
+    const webmap = new WebMap({
+     portalItem: {
+      // autocasts as new PortalItem()
+      id: "f2e9b762544945f390ca4ac3671cfa72",
+     },
+    });
+
+    /********************************************
+     * 将 WebMap 实例设置为 MapView 中的 map 属性.
+     ********************************************/
+    const view = new MapView({
+     map: webmap,
+     container: "viewDiv",
+    });
+   });
+  </script>
+ </head>
+
+ <body>
+  <div id="viewDiv"></div>
+ </body>
+</html>

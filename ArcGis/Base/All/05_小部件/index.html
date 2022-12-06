@@ -1,0 +1,64 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <meta
+   name="viewport"
+   content="initial-scale=1,maximum-scale=1,user-scalable=no"
+  />
+  <title>
+   Intro to widgets using BasemapToggle | Sample | ArcGIS API for JavaScript
+   4.25
+  </title>
+
+  <link
+   rel="stylesheet"
+   href="https://js.arcgis.com/4.25/esri/themes/light/main.css"
+  />
+  <script src="https://js.arcgis.com/4.25/"></script>
+
+  <style>
+   html,
+   body,
+   #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+   }
+  </style>
+
+  <script>
+   require(["esri/Map", "esri/views/MapView", "esri/widgets/BasemapToggle"], (
+    Map,
+    MapView,
+    BasemapToggle
+   ) => {
+    // 用初始的基本地图创建地图
+    const map = new Map({
+     basemap: "topo-vector",
+    });
+
+    // 创建MapView并在实例中引用Map
+    const view = new MapView({
+     container: "viewDiv",
+     map: map,
+     center: [-86.049, 38.485],
+     zoom: 3,
+    });
+
+    // 1 - 创建小部件
+    const toggle = new BasemapToggle({
+     // 2 - 设置属性
+     view: view, // 视图，该视图提供对地图的 'topo-vector' 基础地图的访问
+     nextBasemap: "hybrid", // 允许切换到 'hybrid' 基础地图
+    });
+
+    // 将小部件添加到视图的右上角
+    view.ui.add(toggle, "top-right");
+   });
+  </script>
+ </head>
+ <body>
+  <div id="viewDiv"></div>
+ </body>
+</html>

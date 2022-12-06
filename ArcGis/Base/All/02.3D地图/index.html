@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.3D地图</title>
+  <style>
+   html,
+   body,
+   #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+   }
+  </style>
+
+  <link
+   rel="stylesheet"
+   href="https://js.arcgis.com/4.25/esri/themes/light/main.css"
+  />
+  <script src="https://js.arcgis.com/4.25/"></script>
+
+  <script>
+   require(["esri/config", "esri/Map", "esri/views/SceneView"], function (
+    esriConfig,
+    Map,
+    SceneView
+   ) {
+    esriConfig.apiKey =
+     "AAPK522dc96f16884e819f4b8fce350d96d789_Mj6BV5261zd-PuXodd9Xx47ovmdWj9yaYE6Evu-UQFNazPgc4roNyQIuz-x2B";
+
+    const map = new Map({
+     basemap: "arcgis-topographic", //Basemap layer service
+     ground: "world-elevation", //Elevation service
+    });
+
+    const view = new SceneView({
+     container: "viewDiv",
+     map: map,
+     camera: {
+      position: {
+       x: -118.808, //Longitude
+       y: 33.961, //Latitude
+       z: 2000, //Meters
+      },
+      tilt: 75,
+     },
+    });
+   });
+  </script>
+ </head>
+ <body>
+  <div id="viewDiv"></div>
+ </body>
+</html>
