@@ -43,7 +43,7 @@
     "esri/core/reactiveUtils",
     "esri/widgets/Legend",
    ], (MapView, Map, SpatialReference, GeoJSONLayer, reactiveUtils, Legend) => {
-    // display projected graphics as a FeatureLayer
+    // 显示投影图形作为一个FeatureLayer
     const countriesLayer = new GeoJSONLayer({
      title: "Forest area by country",
      url: "https://developers.arcgis.com/javascript/latest/sample-code/client-projection/live/percent-forest-area.json",
@@ -101,7 +101,7 @@
      },
     });
 
-    // Reproject the data to the projection selected by the user
+    // 将数据重新投影到用户选择的投影
     const wkidSelect = document.getElementById("projectWKID");
     wkidSelect.addEventListener("change", () => {
      view.spatialReference = {
@@ -150,7 +150,7 @@
       xmax: 180,
       ymin: -90,
       ymax: 90,
-      // This geometry automatically reprojects when added to the view
+      // 当添加到视图中时，这个几何图形会自动重新投射
       spatialReference: SpatialReference.WGS84,
      },
     });
