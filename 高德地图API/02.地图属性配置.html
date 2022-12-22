@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+   * {
+    margin: 0;
+    padding: 0;
+   }
+   #container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+   }
+  </style>
+  <script type="text/javascript">
+   window._AMapSecurityConfig = {
+    securityJsCode: "4fc5c4d765a7fb90e3901c4ba60770c5",
+   };
+  </script>
+  <script
+   type="text/javascript"
+   src="https://webapi.amap.com/maps?v=2.0&key=a0f3c5db0c4bc539f45f6fa8db2a086f"
+  ></script>
+ </head>
+ <body>
+  <div id="container"></div>
+  <script src="https://webapi.amap.com/loader.js"></script>
+  <script type="text/javascript">
+   AMapLoader.load({
+    key: "a0f3c5db0c4bc539f45f6fa8db2a086f", // 申请好的Web端开发者Key，首次调用 load 时必填
+    version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+    plugins: [], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
+    AMapUI: {
+     // 是否加载 AMapUI，缺省不加载
+     version: "1.1", // AMapUI 版本
+     plugins: ["overlay/SimpleMarker"], // 需要加载的 AMapUI ui插件
+    },
+    Loca: {
+     // 是否加载 Loca， 缺省不加载
+     version: "2.0", // Loca 版本
+    },
+   })
+    .then((AMap) => {
+     var map = new AMap.Map("container");
+     map.addControl(new AMap.Scale());
+    })
+    .catch((e) => {
+     console.error(e); //加载错误提示
+    });
+  </script>
+  <script>
+   //地图声明
+   var map = new AMap.Map("container", {
+    center: [104.066301, 30.572961], //中心点坐标
+    viewMode: "3D", //使用3D视图
+    layers: [
+     //使用多个图层
+     new AMap.TileLayer.Satellite(),
+     new AMap.TileLayer.RoadNet(),
+    ],
+    zooms: [3, 15], //设置地图级别范围，地图缩放比例范围
+    zoom: 10, //级别，地图缩放比例
+   });
+
+   //实时路况图层
+   var trafficLayer = new AMap.TileLayer.Traffic({
+    zIndex: 10,
+   });
+   map.add(trafficLayer); //添加图层到地图
+
+   //添加点标记
+   //    var marker = new AMap.Marker({
+   //     position: [104.066301, 30.572961], //位置
+   //    });
+   //    map.add(marker); //添加到地图
+
+   //删除点标记
+   //    map.remove(marker);
+
+   //添加折线
+   var lineArr = [
+    [104.096301, 30.572961],
+    [104.046301, 30.552961],
+    [104.026301, 30.532961],
+    [104.016301, 30.512961],
+   ];
+   var polyline = new AMap.Polyline({
+    path: lineArr, //设置线覆盖物路径
+    strokeColor: "red", //线颜色
+    strokeWeight: 5, //线宽
+    strokeStyle: "solid", //线样式
+   });
+   map.add(polyline);
+
+   //事件功能与信息窗体
+   var infoWindow = new AMap.InfoWindow({
+    //创建信息窗体
+    isCustom: true, //使用自定义窗体
+    content: "<div>信息窗体</div>", //信息窗体的内容可以是任意html片段
+    offset: new AMap.Pixel(16, -45),
+   });
+   var onMarkerClick = function (e) {
+    infoWindow.open(map, e.target.getPosition()); //打开信息窗体
+    //e.target就是被点击的Marker
+   };
+   var marker = new AMap.Marker({
+    position: [104.066301, 30.572961],
+   });
+   map.add(marker);
+   marker.on("click", onMarkerClick); //绑定click事件
+  </script>
+ </body>
+</html>
